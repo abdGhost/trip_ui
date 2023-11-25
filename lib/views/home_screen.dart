@@ -29,9 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
         controller: pageController,
         children: [
           makePage(image: 'assets/images/one.jpg', title: 'USA'),
-          makePage(image: 'assets/images/one.jpg', title: 'USA'),
-          makePage(image: 'assets/images/one.jpg', title: 'USA'),
-          makePage(image: 'assets/images/one.jpg', title: 'USA'),
+          makePage(image: 'assets/images/two.jpg', title: 'USA'),
+          makePage(image: 'assets/images/three.jpg', title: 'USA'),
+          makePage(image: 'assets/images/four.jpg', title: 'USA'),
         ],
       ),
     );
