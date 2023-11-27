@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-Widget makePage({image, title}) {
+Widget makePage({image, title, currentPage, pageNo}) {
   return Container(
     decoration: BoxDecoration(
       image: DecorationImage(
@@ -24,21 +25,21 @@ Widget makePage({image, title}) {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.baseline,
               textBaseline: TextBaseline.alphabetic,
               children: [
                 Text(
-                  '1',
-                  style: TextStyle(
+                  '$currentPage',
+                  style: const TextStyle(
                       color: Colors.white,
                       fontSize: 32,
                       fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  '/4',
-                  style: TextStyle(
+                  '/$pageNo',
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 16,
                   ),
@@ -57,48 +58,30 @@ Widget makePage({image, title}) {
                         fontSize: 32,
                         fontWeight: FontWeight.bold),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.only(right: 4),
-                        child: const Icon(Icons.star,
-                            color: Colors.yellowAccent, size: 15),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(right: 4),
-                        child: const Icon(Icons.star,
-                            color: Colors.yellowAccent, size: 15),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(right: 4),
-                        child: const Icon(Icons.star,
-                            color: Colors.yellowAccent, size: 15),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(right: 4),
-                        child: const Icon(Icons.star,
-                            color: Colors.yellowAccent, size: 15),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(right: 4),
-                        child: const Icon(Icons.star,
-                            color: Colors.grey, size: 15),
-                      ),
-                      const Text(
-                        '4.0',
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 16,
-                        ),
-                      ),
-                      const Text(
-                        ' (2333)',
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
+                  Expanded(
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 1,
+                      itemBuilder: (context, _) {
+                        return RatingBar.builder(
+                          itemSize: 25,
+                          initialRating: 3,
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemPadding:
+                              const EdgeInsets.symmetric(horizontal: 4.0),
+                          itemBuilder: (context, _) => const Icon(
+                            Icons.star,
+                            color: Colors.blue,
+                          ),
+                          onRatingUpdate: (rating) {
+                            print(rating);
+                          },
+                        );
+                      },
+                    ),
                   )
                 ],
               ),

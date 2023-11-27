@@ -28,10 +28,26 @@ class _HomeScreenState extends State<HomeScreen> {
       body: PageView(
         controller: pageController,
         children: [
-          makePage(image: 'assets/images/one.jpg', title: 'USA'),
-          makePage(image: 'assets/images/two.jpg', title: 'USA'),
-          makePage(image: 'assets/images/three.jpg', title: 'USA'),
-          makePage(image: 'assets/images/four.jpg', title: 'USA'),
+          makePage(
+              image: 'assets/images/one.jpg',
+              title: 'USA',
+              currentPage: '1',
+              pageNo: '4'),
+          makePage(
+              image: 'assets/images/two.jpg',
+              title: 'USA',
+              currentPage: '2',
+              pageNo: '4'),
+          makePage(
+              image: 'assets/images/three.jpg',
+              title: 'USA',
+              currentPage: '3',
+              pageNo: '4'),
+          makePage(
+              image: 'assets/images/four.jpg',
+              title: 'USA',
+              currentPage: '4',
+              pageNo: '4'),
         ],
       ),
     );
